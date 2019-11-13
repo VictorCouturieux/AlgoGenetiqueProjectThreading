@@ -5,9 +5,19 @@ import java.util.Arrays;
 
 public class Circuit {
 
+    public GestionAllCircuit GestionAllCircuit;
+
+    public Circuit(model.GestionAllCircuit gestionAllCircuit) {
+        GestionAllCircuit = gestionAllCircuit;
+    }
+}
+
+
+class GestionAllCircuit {
+
     ArrayList<Point> list;
 
-    public Circuit() {
+    public GestionAllCircuit() {
         list = new ArrayList<>();
     }
 
@@ -28,4 +38,6 @@ public class Circuit {
     public void setList(ArrayList<Point> list) {
         this.list = list;
     }
+
+
 }
