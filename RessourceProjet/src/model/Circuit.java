@@ -5,10 +5,11 @@ import java.util.Arrays;
 
 public class Circuit {
 
-    public GestionAllCircuit GestionAllCircuit;
+    public static GestionAllCircuit GestionAllCircuit;
 
-    public Circuit(model.GestionAllCircuit gestionAllCircuit) {
-        GestionAllCircuit = gestionAllCircuit;
+    public Circuit() {
+        if (GestionAllCircuit == null)
+            GestionAllCircuit = new GestionAllCircuit();
     }
 }
 
