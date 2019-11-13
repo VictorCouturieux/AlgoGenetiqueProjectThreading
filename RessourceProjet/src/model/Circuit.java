@@ -6,11 +6,39 @@ import java.util.Arrays;
 public class Circuit {
 
     public static GestionAllCircuit GestionAllCircuit;
+    ArrayList<Point> circuit;
+    double fitness = 0.0;
+    double distance = 0;
 
     public Circuit() {
         if (GestionAllCircuit == null)
             GestionAllCircuit = new GestionAllCircuit();
+        this.circuit = new ArrayList<>();
     }
+
+    public Circuit(ArrayList<Point> circuit) {
+        if (GestionAllCircuit == null)
+            GestionAllCircuit = new GestionAllCircuit();
+        this.circuit = circuit;
+    }
+
+    public int len(){
+        return circuit.size();
+    }
+
+    public Point getPoint(int index){
+        return circuit.get(index);
+    }
+//    public void setPoint()
+
+
+    public double getFitness() {
+        return fitness;
+    }
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
+    }
+
 }
 
 
