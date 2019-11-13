@@ -2,10 +2,10 @@ package model;
 
 public class Point {
 
-    private int x, y;
+    private double x, y;
     private String nom;
 
-    public Point(int x, int y, String nom) {
+    public Point(double x, double y, String nom) {
         this.x = x;
         this.y = y;
         this.nom = nom;
@@ -19,14 +19,14 @@ public class Point {
     }
 
 
-    public int getX() {
+    public double getX() {
         return x;
     }
     public void setX(int x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
     public void setY(int y) {

@@ -5,20 +5,16 @@ import java.util.Arrays;
 
 public class Circuit {
 
-    public static GestionAllCircuit GestionAllCircuit;
+    public static GestionAllCircuit GestionAllCircuit = new GestionAllCircuit();
     ArrayList<Point> circuit;
     double fitness = 0.0;
     double distance = 0;
 
     public Circuit() {
-        if (GestionAllCircuit == null)
-            GestionAllCircuit = new GestionAllCircuit();
         this.circuit = new ArrayList<>();
     }
 
     public Circuit(ArrayList<Point> circuit) {
-        if (GestionAllCircuit == null)
-            GestionAllCircuit = new GestionAllCircuit();
         this.circuit = circuit;
     }
 
@@ -53,34 +49,13 @@ public class Circuit {
     public boolean contientPoint(Point point){
         return circuit.contains(point);
     }
+
+    public ArrayList<Point> getCircuit() {
+        return circuit;
+    }
+    public void setCircuit(ArrayList<Point> circuit) {
+        this.circuit = circuit;
+    }
 }
 
 
-class GestionAllCircuit {
-
-    ArrayList<Point> list;
-
-    public GestionAllCircuit() {
-        list = new ArrayList<>();
-    }
-
-    public int nbCircuits(){
-        return list.size();
-    }
-
-    public void addPoint(int x, int y, String nom){
-        list.add(new Point(x, y, nom));
-    }
-    public void addListPoints(Point[] points){
-        list.addAll(Arrays.asList(points));
-    }
-
-    public ArrayList<Point> getList() {
-        return list;
-    }
-    public void setList(ArrayList<Point> list) {
-        this.list = list;
-    }
-
-
-}
