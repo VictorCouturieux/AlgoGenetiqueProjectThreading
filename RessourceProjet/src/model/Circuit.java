@@ -22,15 +22,26 @@ public class Circuit {
         this.circuit = circuit;
     }
 
-    public int len(){
-        return circuit.size();
+    public double getDistance(){
+        if (distance == 0){
+            double circuitDist = 0;
+            int i=0;
+            for (Point p : circuit){
+                Point arrivPoint = circuit.get(i+1);
+                circuitDist += p.distance(arrivPoint);
+                i++;
+            }
+            distance = circuitDist;
+        }
+        return distance;
     }
 
     public Point getPoint(int index){
         return circuit.get(index);
     }
-//    public void setPoint()
-
+    public void setPoint(int index, Point point){
+        circuit.add(index, point);
+    }
 
     public double getFitness() {
         return fitness;
@@ -39,6 +50,9 @@ public class Circuit {
         this.fitness = fitness;
     }
 
+    public boolean contientPoint(Point point){
+        return circuit.contains(point);
+    }
 }
 
 
