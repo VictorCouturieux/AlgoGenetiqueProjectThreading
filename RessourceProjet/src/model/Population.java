@@ -11,12 +11,17 @@ public class Population {
 
         this.list = new ArrayList<>();
 
+        for (int i = 0 ; i < populationSize ; i++) {
+            list.add(new Circuit());
+        }
+
         if(init) {
             for (int i = 0; i< populationSize; i++) {
                 Circuit newCircuit =new Circuit();
+                newCircuit.generatePeople();
+                saveCircuit(i, newCircuit);
             }
         }
-
     }
 
     public void addCircuit(Ville[] points){

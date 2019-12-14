@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.*;
 
 public class Circuit {
 
@@ -15,6 +17,14 @@ public class Circuit {
 
     public Circuit(ArrayList<Ville> circuit) {
         this.circuit = circuit;
+    }
+
+    public void generatePeople() {
+        for (int i = 0; i < GestionAllCircuit.list.size() ; i++) {
+            setPoint(i, GestionAllCircuit.list.get(i));
+        }
+
+        Collections.shuffle(circuit);
     }
 
     public double getDistance(){

@@ -5,7 +5,7 @@ import view.FrameShowMap;
 
 public class Application {
     public static void main(String[] args) {
-        
+
         //region CreaPoint
         Ville p1 = new Ville(3.002556, 45.846117, "Clermont-Ferrand");
         Circuit.GestionAllCircuit.getList().add(p1);
@@ -76,6 +76,8 @@ public class Application {
 
         //limite la pop a 50 circuits
         Population pop = new Population(Circuit.GestionAllCircuit, 50, true);
+        System.out.println(pop.getFittest());
+
         if (pop.getList().size() != 0)
             System.out.println("Distance initiale : " + pop.getFittest().getDistance());
         else
