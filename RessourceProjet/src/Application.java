@@ -1,6 +1,4 @@
-import model.Circuit;
-import model.Ville;
-import model.Population;
+import model.*;
 import view.FrameShowMap;
 
 public class Application {
@@ -76,7 +74,6 @@ public class Application {
 
         //limite la pop a 50 circuits
         Population pop = new Population(Circuit.GestionAllCircuit, 50, true);
-        System.out.println(pop.getFittest());
 
         if (pop.getList().size() != 0)
             System.out.println("Distance initiale : " + pop.getFittest().getDistance());
@@ -84,6 +81,13 @@ public class Application {
             System.err.println("Error : population size");
 
         //evolutionn population sur 10 generation
+
+        //GeneticAlgo ga = new GeneticAlgo(Circuit.GestionAllCircuit);
+        //pop = ga.evoluatePopulation(pop);
+
+        System.out.println("Distance initiale : " + pop.getFittest().getDistance());
+
+        Circuit bestPop = pop.getFittest();
 
         //generer une carte représentant notre solution
         new FrameShowMap(pop);
