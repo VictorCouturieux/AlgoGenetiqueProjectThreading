@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class GestionAllCircuit {
 
-    ArrayList<Point> list;
+    ArrayList<Ville> list;
 
     public GestionAllCircuit() {
         list = new ArrayList<>();
@@ -16,16 +16,16 @@ public class GestionAllCircuit {
     }
 
     public void addPoint(int x, int y, String nom){
-        list.add(new Point(x, y, nom));
+        list.add(new Ville(x, y, nom));
     }
-    public void addListPoints(Point[] points){
+    public void addListPoints(Ville[] points){
         list.addAll(Arrays.asList(points));
     }
 
-    public ArrayList<Point> getList() {
+    public ArrayList<Ville> getList() {
         return list;
     }
-    public void setList(ArrayList<Point> list) {
+    public void setList(ArrayList<Ville> list) {
         this.list = list;
     }
 

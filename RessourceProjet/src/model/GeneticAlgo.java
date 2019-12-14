@@ -74,8 +74,8 @@ public class GeneticAlgo {
             if(Math.random() < mutationRate) {
                 int circuitPos2 = (int) (circuit.getCircuit().size() * Math.random());
 
-                Point point1 = circuit.getPoint(circuitPos1);
-                Point point2 = circuit.getPoint(circuitPos2);
+                Ville point1 = circuit.getPoint(circuitPos1);
+                Ville point2 = circuit.getPoint(circuitPos2);
 
                 circuit.setPoint(circuitPos2, point1);
                 circuit.setPoint(circuitPos1, point2);

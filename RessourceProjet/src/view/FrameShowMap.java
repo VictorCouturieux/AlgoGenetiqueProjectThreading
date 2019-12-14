@@ -1,6 +1,7 @@
 package view;
 
 import model.Population;
+import model.Ville;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,13 +24,26 @@ public class FrameShowMap extends JFrame {
     }
 
 
+
     public void paint(Graphics g) {
 
-        g.fillOval(100, 100, 20, 20);
-
-
+        drawMapPoint(pop.getList().get(0).getPoint(0), g);
 
     }
+
+
+    private void drawMapPoint(Ville v, Graphics g){
+
+        System.out.println(v.getX() + ":" + v.getY());
+
+        int pX = 0;
+        int pY = 0;
+
+        g.fillOval(pY -5, pX -5, 10, 10);
+
+    }
+
+
 
 
 

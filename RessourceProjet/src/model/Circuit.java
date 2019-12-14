@@ -1,12 +1,11 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Circuit {
 
     public static GestionAllCircuit GestionAllCircuit = new GestionAllCircuit();
-    ArrayList<Point> circuit;
+    ArrayList<Ville> circuit;
     double fitness = 0.0;
     double distance = 0;
 
@@ -14,7 +13,7 @@ public class Circuit {
         this.circuit = new ArrayList<>();
     }
 
-    public Circuit(ArrayList<Point> circuit) {
+    public Circuit(ArrayList<Ville> circuit) {
         this.circuit = circuit;
     }
 
@@ -22,8 +21,8 @@ public class Circuit {
         if (distance == 0){
             double circuitDist = 0;
             int i=0;
-            for (Point p : circuit){
-                Point arrivPoint = circuit.get(i+1);
+            for (Ville p : circuit){
+                Ville arrivPoint = circuit.get(i+1);
                 circuitDist += p.distance(arrivPoint);
                 i++;
             }
@@ -32,10 +31,10 @@ public class Circuit {
         return distance;
     }
 
-    public Point getPoint(int index){
+    public Ville getPoint(int index){
         return circuit.get(index);
     }
-    public void setPoint(int index, Point point){
+    public void setPoint(int index, Ville point){
         circuit.add(index, point);
     }
 
@@ -46,14 +45,14 @@ public class Circuit {
         this.fitness = fitness;
     }
 
-    public boolean contientPoint(Point point){
+    public boolean contientPoint(Ville point){
         return circuit.contains(point);
     }
 
-    public ArrayList<Point> getCircuit() {
+    public ArrayList<Ville> getCircuit() {
         return circuit;
     }
-    public void setCircuit(ArrayList<Point> circuit) {
+    public void setCircuit(ArrayList<Ville> circuit) {
         this.circuit = circuit;
     }
 }

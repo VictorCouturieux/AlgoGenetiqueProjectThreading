@@ -1,17 +1,17 @@
 package model;
 
-public class Point {
+public class Ville {
 
     private double x, y;
     private String nom;
 
-    public Point(double x, double y, String nom) {
+    public Ville(double x, double y, String nom) {
         this.x = x;
         this.y = y;
         this.nom = nom;
     }
 
-    public double distance(Point otherPoint){
+    public double distance(Ville otherPoint){
         double distanceX = (otherPoint.getX()-x)*40000*Math.cos((y+otherPoint.getY())*Math.PI/360)/360;
         double distanceY = (y-otherPoint.getY())*40000f/360f;
 

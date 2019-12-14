@@ -19,7 +19,7 @@ public class Population {
 
     }
 
-    public void addCircuit(Point[] points){
+    public void addCircuit(Ville[] points){
         Circuit circuit = new Circuit();
         circuit.GestionAllCircuit.addListPoints(points);
         list.add(circuit);
