@@ -1,5 +1,6 @@
 package view;
 
+import model.Circuit;
 import model.Population;
 import model.Ville;
 
@@ -15,31 +16,35 @@ public class FrameShowMap extends JFrame {
         this.pop = pop;
 
         setTitle("SHOW MAP");
-        setSize(400, 400);
-        setLocation(200, 200);
+        setSize(1000, 1000);
+        setLocation(400, 25);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
     }
 
-
-
     public void paint(Graphics g) {
 
-        drawMapPoint(pop.getList().get(0).getPoint(0), g);
+        for (Circuit circuit : pop.getList()) {
+            for (Ville ville : circuit.getCircuit()) {
+                drawMapPoint(ville, g);
+            }
+        }
 
     }
 
 
     private void drawMapPoint(Ville v, Graphics g){
 
-        System.out.println(v.getX() + ":" + v.getY());
+        System.out.println(v.getX() + " : " + v.getY());
 
-        int pX = 0;
-        int pY = 0;
+        int pX = (int) (400 + v.getX()*60);
+        int pY = (int) (-2300 + v.getY()*60);
 
-        g.fillOval(pY -5, pX -5, 10, 10);
+        System.out.println(pX + " : " + pY);
+
+        g.fillOval(pY, pX, 10, 10);
 
     }
 
