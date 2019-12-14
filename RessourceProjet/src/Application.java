@@ -1,6 +1,7 @@
 import model.Circuit;
 import model.Point;
 import model.Population;
+import view.FrameShowMap;
 
 public class Application {
     public static void main(String[] args) {
@@ -75,12 +76,15 @@ public class Application {
 
         //limite la pop a 50 circuits
         Population pop = new Population(Circuit.GestionAllCircuit, 50, true);
-        System.out.println("Distance initiale : " + pop.getFittest().getDistance());
+        if (pop.getList().size() != 0)
+            System.out.println("Distance initiale : " + pop.getFittest().getDistance());
+        else
+            System.err.println("Error : population size");
 
         //evolutionn population sur 10 generation
 
         //generer une carte représentant notre solution
-
+        new FrameShowMap(pop);
 
     }
 }
