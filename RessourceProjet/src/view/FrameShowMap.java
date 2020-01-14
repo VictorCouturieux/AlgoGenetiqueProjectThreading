@@ -32,16 +32,23 @@ public class FrameShowMap extends JFrame {
 
         Ville v = null;
 
-        for (Circuit circuit : pop.getList()) {
-            for (Ville ville : circuit.getCircuit()) {
-                drawMapPoint(ville, g);
+//        ArrayList<Ville> polylineVille = new ArrayList<>();
+//        for (Circuit circuit : pop.getList()) {
+//            for (Ville ville : circuit.getCircuit()) {
+//                drawMapPoint(ville, g);
+//
+//                polylineVille.add(ville);
+//
+////                if (v != null)
+////                    drawMapLine(v, ville, g);
+////
+////                v = ville;
+//            }
+//        }
+//        drawMapPolyline(polylineVille, g);
 
-                if (v != null)
-                    drawMapLine(v, ville, g);
+        drawMapPolyline(Circuit.GestionAllCircuit.getList(), g);
 
-                v = ville;
-            }
-        }
     }
 
 
@@ -54,7 +61,7 @@ public class FrameShowMap extends JFrame {
 
 //        System.out.println(pX + " : " + pY);
 
-        g.fillOval(pY, pX, 10, 10);
+        g.fillOval(pX, pY, 10, 10);
 
     }
 
@@ -66,7 +73,7 @@ public class FrameShowMap extends JFrame {
         int p2X = (int) (400 + v2.getX()*60);
         int p2Y = (int) (-2300 + v2.getY()*60);
 
-        g.drawLine(p1Y, p1X, p2Y, p2X);
+        g.drawLine(p1X, p1Y, p2X, p2Y);
     }
 
     private void drawMapPolyline(ArrayList<Ville> listV, Graphics g){
@@ -75,19 +82,17 @@ public class FrameShowMap extends JFrame {
         ArrayList<Integer> aListY = new ArrayList<>();
 
         for (Ville v : listV) {
-            aListX.add((int) v.getX());
-            aListY.add((int) v.getY());
+            int px = (int) (400 + v.getX()*60);
+            int py = (int) (-2300 + v.getY()*60);
+
+            aListX.add(px);
+            aListY.add(py);
         }
         int[] lX = aListX.stream().mapToInt(i -> i).toArray();
         int[] lY = aListY.stream().mapToInt(i -> i).toArray();
 
         g.drawPolyline(lX, lY, listV.size());
     }
-
-
-
-
-
 
 
 }
