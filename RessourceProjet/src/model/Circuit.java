@@ -32,7 +32,7 @@ public class Circuit {
             double circuitDist = 0;
             int i=0;
             for (Ville p : circuit){
-                Ville arrivPoint = circuit.get(i+1);
+                Ville arrivPoint = circuit.get(i);
                 circuitDist += p.distance(arrivPoint);
                 i++;
             }

@@ -82,15 +82,23 @@ public class Application {
 
         //evolutionn population sur 10 generation
 
-        //GeneticAlgo ga = new GeneticAlgo(Circuit.GestionAllCircuit);
-        //pop = ga.evoluatePopulation(pop);
+        GeneticAlgo ga = new GeneticAlgo(Circuit.GestionAllCircuit);
+        System.out.println("Genetic Algo" + ga);
 
-        System.out.println("Distance initiale : " + pop.getFittest().getDistance());
+        Population popu = ga.evoluatePopulation(pop);
 
-        Circuit bestPop = pop.getFittest();
+        for (int i =0; i< 50 ; i++) {
+            popu = ga.evoluatePopulation(pop);
+        }
+
+        System.out.println("Distance initiale : " + popu.getCircuit(0).getCircuit().get(0).getNom());
+
+        Circuit bestPop = popu.getFittest();
+
+        System.out.println("best pop : " + bestPop.getCircuit());
 
         //generer une carte représentant notre solution
-        new FrameShowMap(pop);
+        new FrameShowMap(popu);
 
     }
 }

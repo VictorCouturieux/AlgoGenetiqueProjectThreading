@@ -90,6 +90,7 @@ public class GeneticAlgo {
             int randomId = (int)(Math.random() * pop.populationSize());
             population.saveCircuit(i, pop.getCircuit(randomId));
         }
+        System.out.println("Pop size" + "ok");
 
         Circuit fittest = population.getFittest();
 

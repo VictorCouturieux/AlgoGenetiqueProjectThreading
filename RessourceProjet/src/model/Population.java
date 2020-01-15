@@ -17,7 +17,7 @@ public class Population {
 
         if(init) {
             for (int i = 0; i< populationSize; i++) {
-                Circuit newCircuit =new Circuit();
+                Circuit newCircuit = new Circuit();
                 newCircuit.generatePeople();
                 saveCircuit(i, newCircuit);
             }
@@ -47,18 +47,17 @@ public class Population {
     }
 
     public void saveCircuit(int index, Circuit circuit) {
-        list.add(index, circuit);
+        list.set(index, circuit);
     }
 
     public Circuit getFittest() {
         Circuit fittest = list.get(0);
 
-        for (int i = 0; i < populationSize(); i++) {
+        for (int i = 0; i < this.populationSize(); i++) {
             if(fittest.getFitness() <= getCircuit(i).getFitness()) {
-                fittest = getCircuit(i);
+                fittest = this.getCircuit(i);
             }
         }
-
         return fittest;
     }
 
