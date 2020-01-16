@@ -44,7 +44,7 @@ public class GeneticAlgo {
        int startpos = (int)(Math.random() * parent1.getCircuit().size());
        int endPos = (int) (Math.random() * parent1.getCircuit().size());
 
-       for(int i = 0; i < enfant.getCircuit().size(); i++) {
+       for(int i = 0; i < Circuit.GestionAllCircuit.list.size(); i++) {
            if(startpos < endPos && i > startpos && i < endPos) {
                enfant.setPoint(i, parent1.getPoint(i));
            }
@@ -55,7 +55,7 @@ public class GeneticAlgo {
            }
        }
 
-       for (int i = 0; i < parent2.getCircuit().size(); i++) {
+       for (int i = 0; i < Circuit.GestionAllCircuit.list.size(); i++) {
            if(!(enfant.contientPoint(parent2.getPoint(i)))) {
                for (int j = 0 ; j < enfant.getCircuit().size(); j++) {
                    if(enfant.getPoint(j) == null) {
@@ -90,7 +90,6 @@ public class GeneticAlgo {
             int randomId = (int)(Math.random() * pop.populationSize());
             population.saveCircuit(i, pop.getCircuit(randomId));
         }
-        System.out.println("Pop size" + "ok");
 
         Circuit fittest = population.getFittest();
 

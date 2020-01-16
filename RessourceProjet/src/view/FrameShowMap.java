@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 public class FrameShowMap extends JFrame {
 
-    private Population pop;
+    private Circuit circuit;
 
     int width = 1000, height = 1000;
 
-    public FrameShowMap(Population pop) throws HeadlessException {
+    public FrameShowMap(Circuit circuit) throws HeadlessException {
         super();
-        this.pop = pop;
+        this.circuit = circuit;
 
         setTitle("SHOW MAP");
         setSize(width, height);
@@ -29,26 +29,10 @@ public class FrameShowMap extends JFrame {
     }
 
     public void paint(Graphics g) {
+        for (Ville ville : circuit.getCircuit())
+            drawMapPoint(ville, g);
 
-        Ville v = null;
-
-//        ArrayList<Ville> polylineVille = new ArrayList<>();
-//        for (Circuit circuit : pop.getList()) {
-//            for (Ville ville : circuit.getCircuit()) {
-//                drawMapPoint(ville, g);
-//
-//                polylineVille.add(ville);
-//
-////                if (v != null)
-////                    drawMapLine(v, ville, g);
-////
-////                v = ville;
-//            }
-//        }
-//        drawMapPolyline(polylineVille, g);
-
-        drawMapPolyline(Circuit.GestionAllCircuit.getList(), g);
-
+        drawMapPolyline(circuit.getCircuit(), g);
     }
 
 
@@ -91,7 +75,7 @@ public class FrameShowMap extends JFrame {
         int[] lX = aListX.stream().mapToInt(i -> i).toArray();
         int[] lY = aListY.stream().mapToInt(i -> i).toArray();
 
-        g.drawPolyline(lX, lY, listV.size());
+        g.drawPolygon(lX, lY, listV.size());
     }
 
 

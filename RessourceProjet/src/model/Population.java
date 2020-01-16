@@ -12,7 +12,7 @@ public class Population {
         this.list = new ArrayList<>();
 
         for (int i = 0 ; i < populationSize ; i++) {
-            list.add(new Circuit());
+            list.add(null);
         }
 
         if(init) {
@@ -26,7 +26,7 @@ public class Population {
 
     public void addCircuit(Ville[] points){
         Circuit circuit = new Circuit();
-        circuit.GestionAllCircuit.addListPoints(points);
+        Circuit.GestionAllCircuit.addListPoints(points);
         list.add(circuit);
     }
 
@@ -58,6 +58,9 @@ public class Population {
                 fittest = this.getCircuit(i);
             }
         }
+        if (fittest.circuit.size() == 0)
+            System.out.println();
+
         return fittest;
     }
 

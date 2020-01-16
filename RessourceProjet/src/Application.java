@@ -75,30 +75,35 @@ public class Application {
         //limite la pop a 50 circuits
         Population pop = new Population(Circuit.GestionAllCircuit, 50, true);
 
-        if (pop.getList().size() != 0)
-            System.out.println("Distance initiale : " + pop.getFittest().getDistance());
-        else
-            System.err.println("Error : population size");
+//        try {
+//            if (pop.getList().size() != 0)
+//                System.out.println("Distance initiale : " + pop.getFittest().getDistance());
+//            else
+//                System.err.println("Error : population size");
+//        }catch (Exception e){
+//            System.err.println("Error : Distance");
+//        }
 
         //evolutionn population sur 10 generation
 
         GeneticAlgo ga = new GeneticAlgo(Circuit.GestionAllCircuit);
-        System.out.println("Genetic Algo" + ga);
+//        System.out.println("Genetic Algo" + ga);
 
-        Population popu = ga.evoluatePopulation(pop);
+//        Population popu = ga.evoluatePopulation(pop);
 
-        for (int i =0; i< 50 ; i++) {
-            popu = ga.evoluatePopulation(pop);
+        pop = ga.evoluatePopulation(pop);
+        for (int i =0; i<100 ; i++) {
+            pop = ga.evoluatePopulation(pop);
         }
 
-        System.out.println("Distance initiale : " + popu.getCircuit(0).getCircuit().get(0).getNom());
+        System.out.println("Distance initiale : " + pop.getCircuit(0).getCircuit().get(0).getNom());
 
-        Circuit bestPop = popu.getFittest();
+        Circuit bestPop = pop.getFittest();
 
         System.out.println("best pop : " + bestPop.getCircuit());
 
         //generer une carte représentant notre solution
-        new FrameShowMap(popu);
+        new FrameShowMap(bestPop);
 
     }
 }

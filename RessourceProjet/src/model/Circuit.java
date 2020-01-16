@@ -8,11 +8,17 @@ public class Circuit {
 
     public static GestionAllCircuit GestionAllCircuit = new GestionAllCircuit();
     ArrayList<Ville> circuit;
+//    Ville[] tblCircuit = new Ville[GestionAllCircuit.list.size()];
     double fitness = 0.0;
     double distance = 0;
 
     public Circuit() {
         this.circuit = new ArrayList<>();
+
+        for (int i = 0; i<GestionAllCircuit.list.size(); i++){
+            circuit.add(null);
+        }
+
     }
 
     public Circuit(ArrayList<Ville> circuit) {
@@ -23,7 +29,6 @@ public class Circuit {
         for (int i = 0; i < GestionAllCircuit.list.size() ; i++) {
             setPoint(i, GestionAllCircuit.list.get(i));
         }
-
         Collections.shuffle(circuit);
     }
 
@@ -31,9 +36,13 @@ public class Circuit {
         if (distance == 0){
             double circuitDist = 0;
             int i=0;
-            for (Ville p : circuit){
-                Ville arrivPoint = circuit.get(i);
-                circuitDist += p.distance(arrivPoint);
+            for (Ville originePoint : circuit){
+                Ville arrivPoint = null;
+                if (i+1<circuit.size())
+                    arrivPoint = circuit.get(i+1);
+                else
+                    arrivPoint = circuit.get(0);
+                circuitDist += originePoint.distance(arrivPoint);
                 i++;
             }
             distance = circuitDist;
@@ -45,10 +54,14 @@ public class Circuit {
         return circuit.get(index);
     }
     public void setPoint(int index, Ville point){
+        circuit.remove(index);
         circuit.add(index, point);
     }
 
     public double getFitness() {
+        if(fitness == 0) {
+            fitness = 1/getDistance();
+        }
         return fitness;
     }
     public void setFitness(double fitness) {
