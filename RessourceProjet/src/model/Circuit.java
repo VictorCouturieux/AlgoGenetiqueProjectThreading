@@ -54,8 +54,7 @@ public class Circuit {
         return circuit.get(index);
     }
     public void setPoint(int index, Ville point){
-        circuit.remove(index);
-        circuit.add(index, point);
+        circuit.set(index, point);
     }
 
     public double getFitness() {
