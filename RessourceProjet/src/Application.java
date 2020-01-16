@@ -4,7 +4,6 @@ import view.FrameShowMap;
 public class Application {
     public static void main(String[] args) {
 
-        //region CreaPoint
         Ville p1 = new Ville(3.002556, 45.846117, "Clermont-Ferrand");
         Circuit.GestionAllCircuit.getList().add(p1);
 
@@ -69,27 +68,12 @@ public class Application {
         Circuit.GestionAllCircuit.getList().add(p21);
 
         Ville p22 = new Ville(-0.457140, 46.373545, "Niort");
-        Circuit.GestionAllCircuit.getList().add(p22);
-        //endregion CreaPoint
 
-        //limite la pop a 50 circuits
+        Circuit.GestionAllCircuit.getList().add(p22);
+
         Population pop = new Population(Circuit.GestionAllCircuit, 50, true);
 
-//        try {
-//            if (pop.getList().size() != 0)
-//                System.out.println("Distance initiale : " + pop.getFittest().getDistance());
-//            else
-//                System.err.println("Error : population size");
-//        }catch (Exception e){
-//            System.err.println("Error : Distance");
-//        }
-
-        //evolutionn population sur 10 generation
-
         GeneticAlgo ga = new GeneticAlgo(Circuit.GestionAllCircuit);
-//        System.out.println("Genetic Algo" + ga);
-
-//        Population popu = ga.evoluatePopulation(pop);
 
         pop = ga.evoluatePopulation(pop);
         for (int i =0; i<100000 ; i++) {
@@ -102,8 +86,6 @@ public class Application {
 
         System.out.println("best pop : " + bestPop.getCircuit());
 
-        //generer une carte représentant notre solution
         new FrameShowMap(bestPop);
-
     }
 }
