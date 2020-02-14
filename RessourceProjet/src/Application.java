@@ -77,6 +77,7 @@ public class Application {
         Circuit.GestionAllCircuit.getList().add(p21);
 
         Ville p22 = new Ville(-0.457140, 46.373545, "Niort");
+
         Circuit.GestionAllCircuit.getList().add(p22);
         //endregion CreaPoint
 
