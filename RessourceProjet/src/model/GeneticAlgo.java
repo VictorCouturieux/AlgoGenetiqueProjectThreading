@@ -296,34 +296,34 @@ public class GeneticAlgo {
 //    }
 }
 
-class Reproduction implements Callable<Object>{
-    @Override
-    public Object call() throws Exception {
-        return null;
-    }
-}
-class Mutation implements Callable<Object>{
-    @Override
-    public Object call() throws Exception {
-        return null;
-    }
-}
-class Selection implements Callable<Circuit>{
-
-    Population p;
-
-    public Selection(Population p) {
-        this.p = p;
-    }
-
-    @Override
-    public Circuit call() throws Exception {
-
-
-
-        return null;
-    }
-}
+//class Reproduction implements Callable<Object>{
+//    @Override
+//    public Object call() throws Exception {
+//        return null;
+//    }
+//}
+//class Mutation implements Callable<Object>{
+//    @Override
+//    public Object call() throws Exception {
+//        return null;
+//    }
+//}
+//class Selection implements Callable<Circuit>{
+//
+//    Population p;
+//
+//    public Selection(Population p) {
+//        this.p = p;
+//    }
+//
+//    @Override
+//    public Circuit call() throws Exception {
+//
+//
+//
+//        return null;
+//    }
+//}
 
 
 //class MatingSynchro implements Runnable {
