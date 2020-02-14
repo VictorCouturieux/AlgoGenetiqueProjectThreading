@@ -1,8 +1,16 @@
 import model.*;
 import view.FrameShowMap;
 
+import java.util.ArrayList;
+
 public class Application {
+
+    private static int NBPOP_VALID = 200;
+
     public static void main(String[] args) {
+
+        long debut = System.currentTimeMillis();
+
 
         //region CreaPoint
         Ville p1 = new Ville(3.002556, 45.846117, "Clermont-Ferrand");
@@ -73,37 +81,79 @@ public class Application {
         //endregion CreaPoint
 
         //limite la pop a 50 circuits
-        Population pop = new Population(Circuit.GestionAllCircuit, 50, true);
-
-//        try {
-//            if (pop.getList().size() != 0)
-//                System.out.println("Distance initiale : " + pop.getFittest().getDistance());
-//            else
-//                System.err.println("Error : population size");
-//        }catch (Exception e){
-//            System.err.println("Error : Distance");
-//        }
-
-        //evolutionn population sur 10 generation
+        Population pop = new Population(Circuit.GestionAllCircuit, 1000, true);
 
         GeneticAlgo ga = new GeneticAlgo(Circuit.GestionAllCircuit);
-//        System.out.println("Genetic Algo" + ga);
 
-//        Population popu = ga.evoluatePopulation(pop);
+        ArrayList<Population> popValide = new ArrayList<>();
+
+        //iterat number
+//        pop = ga.evoluatePopulation(pop);
+//        for (int i =0; i<1000 ; i++)
+//            pop = ga.evoluatePopulation(pop);
 
         pop = ga.evoluatePopulation(pop);
-        for (int i =0; i<100000 ; i++) {
+        int itera = 0;
+        while (!compareGeneration(popValide)){
+            popValide.add(pop);
+            if (popValide.size()>NBPOP_VALID)
+                popValide.remove(0);
             pop = ga.evoluatePopulation(pop);
+            itera++;
         }
+        System.out.println("nb iteration : " + itera);
 
-        System.out.println("Distance initiale : " + pop.getCircuit(0).getCircuit().get(0).getNom());
 
         Circuit bestPop = pop.getFittest();
-
-        System.out.println("best pop : " + bestPop.getCircuit());
-
         //generer une carte représentant notre solution
         new FrameShowMap(bestPop);
 
+        //Affiche la durée d'exécution en millisecondes
+        System.out.println("RunTimeMilis : " + (System.currentTimeMillis() - debut));
+
+        //nb Processeur
+        System.out.println("Nb Coeur PC : " + Runtime.getRuntime().availableProcessors());
+
     }
+
+    private static boolean compareGeneration(ArrayList<Population> list){
+        if (list.size()<NBPOP_VALID)
+            return false;
+//        int valide=0, diff=0;
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                // compare list.get(i) and list.get(j)
+//                if (list.get(i).getFittest().getDistance() != list.get(j).getFittest().getDistance())
+//                    diff++;
+//                else
+//                    valide++;
+                ///////
+                if (list.get(i).getFittest().getDistance() != list.get(j).getFittest().getDistance())
+                    return false;
+            }
+        }
+//        System.out.println("valide : " + valide + " //diff : " + diff);
+//        if (diff != 0)
+//            return false;
+//        else
+            return true;
+
+    }
+
+    private static Population getBestPopFromGenerationList(ArrayList<Population> list){
+        Population pop = list.get(0);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getFittest().getDistance() > pop.getFittest().getDistance())
+                pop = list.get(i);
+        }
+        return pop;
+    }
+
+//    private static Population comparePopWithBestGenerationList(Population pop, ArrayList<Population> list){
+//
+//        Population BestPopList = getBestPopFromGenerationList(list);
+////
+////        if ()
+////        return list.
+//    }
 }
