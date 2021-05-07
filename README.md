@@ -1,2 +1,2 @@
 # AlgoGenetiqueProjectThreading
-Study of creating a genetic algorithm by following the traveling salesman process.
+Createa genetic algorithm by following the traveling salesman process.
